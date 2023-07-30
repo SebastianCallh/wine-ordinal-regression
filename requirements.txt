@@ -1,0 +1,6 @@
+pandas==2.0.*
+numpyro==0.12.*
+arviz==0.16.*
+matplotlib==3.7.*
+seaborn==0.12.*
+black
