@@ -79,8 +79,8 @@ def ordinal_regression(X, t, ntypes, concentration, anchor_point=0.0, y=None):
     alpha_loc = npo.sample("alpha_loc", dist.Cauchy(0, 1))
     alpha_scale = npo.sample("alpha_scale", dist.HalfCauchy(1))
 
-    beta_loc = npo.sample("beta_loc", dist.Cauchy(0, 1))
-    beta_scale = npo.sample("beta_scale", dist.HalfCauchy(1))
+    beta_loc = npo.sample("beta_loc", dist.Cauchy(jnp.zeros(D), 1)).reshape(-1, 1)
+    beta_scale = npo.sample("beta_scale", dist.HalfCauchy(jnp.ones(D))).reshape(-1, 1)
 
     with npo.plate("type", ntypes, dim=-1):
         alpha = npo.sample("alpha", dist.Normal(alpha_loc, alpha_scale))
