@@ -73,7 +73,7 @@ def inference(model, num_warmup, num_samples, num_chains, **kwargs):
     return idata
 
 
-def ordinal_regression(X, t, ntypes, nclasses, concentration, anchor_point=0.0, y=None):
+def ordinal_regression(X, t, ntypes, concentration, anchor_point=0.0, y=None):
     N, D = X.shape
 
     alpha_loc = npo.sample("alpha_loc", dist.Cauchy(0, 1))
@@ -123,7 +123,6 @@ idata = inference(
     y=y,
     t=t,
     ntypes=ntypes,
-    nclasses=nclasses,
     concentration=concentration,
     num_warmup=500,
     num_samples=1000,
